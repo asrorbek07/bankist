@@ -216,7 +216,7 @@ const startLogoutTimer = function(){
   if (time===0) {
     clearInterval(timer);
     currentAccount=undefined;
-    containerApp.style.opacity = 0;
+    containerApp.classList.add("d-none")
     labelDate.textContent="";
     labelWelcome.textContent="Log in to get started"
   }
@@ -235,7 +235,7 @@ btnLogin.addEventListener("click", function(evt){
   currentAccount = accounts.find(acc => acc.userName===inputLoginUsername.value)
   if (currentAccount?.pin===+(inputLoginPin.value)) {
     labelWelcome.textContent = `Welcome back ${currentAccount.owner.split(" ")[0]}`
-    containerApp.style.opacity = 100;
+    containerApp.classList.remove("d-none");
     labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, {hour:"numeric", minute: "numeric", day: "numeric", month: "long", year: "numeric"}).format(new Date())
     inputLoginUsername.value="";
     inputLoginPin.value="";
@@ -264,7 +264,7 @@ btnClose.addEventListener("click", function(evt){
   const index = accounts.findIndex(acc => acc.userName===inputCloseUsername.value);
   accounts.splice(index, 1);
   currentAccount=undefined;
-  containerApp.style.opacity = 0;
+  containerApp.classList.add("d-none");
   inputClosePin.value=inputCloseUsername.value=labelDate.textContent=labelWelcome.textContent="";
   }
 })
