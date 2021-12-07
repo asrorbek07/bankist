@@ -208,7 +208,7 @@ function updateUI(currentAccount){
 }
 
 const startLogoutTimer = function(){
-  let time = 10;
+  let time = 70;
   const timerFn = function(){
   const min = String(Math.trunc(time/60)).padStart(2,0);
   const sekund = String(time%60).padStart(2,0);
